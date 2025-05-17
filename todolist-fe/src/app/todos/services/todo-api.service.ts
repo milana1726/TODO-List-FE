@@ -27,8 +27,8 @@ export class TodoApiService {
     return this.http.post<TodoResponse>(BASE_URL, newTodo);
   }
 
-  public updateTodo(todo: Todo): Observable<number> {
-    return this.http.put<number>(`${BASE_URL}/${todo._id}`, todo);
+  public updateTodo(todo: Todo): Observable<Todo> {
+    return this.http.patch<Todo>(`${BASE_URL}/${todo._id}`, todo);
   }
 
   public deleteTodo(id: string): Observable<Todo> {
