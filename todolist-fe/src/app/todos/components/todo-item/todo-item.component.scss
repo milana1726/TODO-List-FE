@@ -1,0 +1,51 @@
+@use "variables";
+
+.todo__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  background-color: variables.$background-color-item;
+  transition: background-color 0.3s ease;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  &__actions {
+    gap: 0.3rem;
+
+    &__edit-btn,
+    &__delete-btn {
+      border-radius: 0.5rem;
+      box-shadow: none;
+      font-weight: bold;
+      color: variables.$white-color;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+        filter: brightness(1.2);
+      }
+
+      mat-icon {
+        margin-top: 0.3rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    &__edit-btn {
+      background-color: variables.$primary-color;
+    }
+
+    &__delete-btn {
+      background-color: variables.$error-color;
+    }
+  }
+}

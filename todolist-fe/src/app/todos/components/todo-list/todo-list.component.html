@@ -1,0 +1,6 @@
+<div class="todolist">
+  <app-todo-form />
+  @for (todo of todos; track todo._id) {
+    <app-todo-item [todo]="todo" />
+  }
+</div>

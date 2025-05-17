@@ -1,0 +1,30 @@
+@use "variables";
+@use "form-field" as *;
+
+.todo__form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  overflow: visible;
+
+  &__input {
+    width: 90%;
+  }
+
+  &__add-btn {
+    border-radius: 0.5rem;
+    box-shadow: none;
+    font-weight: bold;
+    background-color: variables.$primary-color;
+    color: variables.$white-color;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+      filter: brightness(1.2);
+    }
+  }
+}

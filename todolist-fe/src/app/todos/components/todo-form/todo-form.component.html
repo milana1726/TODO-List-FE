@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="todo__form">
+  <mat-form-field appearance="outline" class="todo__form__input">
+    <input matInput placeholder="Type something..." formControlName="message" />
+    <mat-error class="hint" *ngIf="messageControl?.invalid">
+      <span *ngIf="messageControl?.errors?.['required']">
+        Please enter a message
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <button mat-mini-fab class="todo__form__add-btn">
+    <mat-icon>add</mat-icon>
+  </button>
+</form>
