@@ -2,8 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BASE_URL } from '../models/constants/api-url';
-import { Todo, TodoBody, TodoResponse } from '../models/interfaces/todo';
+import { BASE_URL } from '../../shared/models/constants/api-url';
+import {
+  Todo,
+  TodoBody,
+  TodoResponse,
+} from '../../shared/models/interfaces/todo';
 
 @Injectable({
   providedIn: 'root',
