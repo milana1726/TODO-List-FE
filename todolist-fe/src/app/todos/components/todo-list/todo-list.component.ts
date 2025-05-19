@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Todo } from '../../../shared/models/interfaces/todo';
 import { TodoFormComponent } from '../todo-form/todo-form.component';
@@ -12,6 +12,8 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
 })
 export class TodoListComponent {
   @Input() todos: Todo[] = [];
+  @Output() deleteTodo = new EventEmitter<string>();
+  @Output() updateTodo = new EventEmitter<Todo>();
 
   static trackByFn(todo: Todo): string {
     return todo._id;

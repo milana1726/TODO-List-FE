@@ -7,10 +7,20 @@
     <p class="todo__item__content__message">{{ todo?.message }}</p>
   </mat-card-content>
   <mat-card-actions class="todo__item__actions">
-    <button mat-mini-fab type="button" class="todo__item__actions__edit-btn">
+    <button
+      mat-mini-fab
+      type="button"
+      class="todo__item__actions__edit-btn"
+      (click)="updateTodo.emit()"
+    >
       <mat-icon>edit</mat-icon>
     </button>
-    <button mat-mini-fab type="button" class="todo__item__actions__delete-btn">
+    <button
+      mat-mini-fab
+      type="button"
+      class="todo__item__actions__delete-btn"
+      (click)="deleteTodo.emit()"
+    >
       <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>

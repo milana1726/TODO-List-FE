@@ -5,10 +5,9 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding-bottom: 1rem;
-  overflow: visible;
+  padding: 1rem 0;
 
   &__input {
     width: 90%;

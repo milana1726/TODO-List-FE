@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -29,4 +29,6 @@ import { Todo } from '../../../shared/models/interfaces/todo';
 })
 export class TodoItemComponent {
   @Input() todo: Todo | undefined;
+  @Output() deleteTodo = new EventEmitter<void>();
+  @Output() updateTodo = new EventEmitter<void>();
 }
