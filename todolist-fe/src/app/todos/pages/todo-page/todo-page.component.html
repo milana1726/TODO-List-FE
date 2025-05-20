@@ -1,6 +1,9 @@
 <div class="todos__page">
   <h1>Tasks to do:</h1>
   <app-todo-form (addTodo)="addTodo($event)" />
+  @if (loading()) {
+    <mat-spinner></mat-spinner>
+  }
   <app-todo-list
     [todos]="todos()"
     (toggleTodo)="toggleTodo($event)"

@@ -23,70 +23,62 @@ export const TodoStore = signalStore(
       });
     },
     addTodo: (message: string) => {
-      patchState(store, { loading: true });
+      patchState(store, { loading: false });
       todoApi.addTodo({ message, completed: false }).subscribe({
         next: (newTodo) =>
           patchState(store, {
             todos: [...store.todos(), newTodo],
-            loading: false,
             error: null,
           }),
         error: (err: Error) =>
           patchState(store, {
-            loading: false,
             error: err.message,
           }),
       });
     },
     toggleTodo: (todo: Todo) => {
-      patchState(store, { loading: true });
+      patchState(store, { loading: false });
       todoApi.updateTodo({ ...todo, completed: !todo.completed }).subscribe({
         next: (updatedTodo) =>
           patchState(store, {
             todos: store
               .todos()
               .map((t) => (t._id === updatedTodo._id ? updatedTodo : t)),
-            loading: false,
             error: null,
           }),
         error: (err: Error) =>
           patchState(store, {
-            loading: false,
             error: err.message,
           }),
       });
     },
 
     updateTodoMessage: (todo: Todo, updatedMessage: string) => {
-      patchState(store, { loading: true });
+      patchState(store, { loading: false });
       todoApi.updateTodo({ ...todo, message: updatedMessage }).subscribe({
         next: (updatedTodo) =>
           patchState(store, {
             todos: store
               .todos()
               .map((t) => (t._id === updatedTodo._id ? updatedTodo : t)),
-            loading: false,
             error: null,
           }),
         error: (err: Error) =>
           patchState(store, {
-            loading: false,
             error: err.message,
           }),
       });
     },
     deleteTodo: (id: string) => {
-      patchState(store, { loading: true });
+      patchState(store, { loading: false });
       todoApi.deleteTodo(id).subscribe({
         next: () =>
           patchState(store, {
             todos: store.todos().filter((t) => t._id !== id),
-            loading: false,
             error: null,
           }),
         error: (err: Error) =>
           patchState(store, {
-            loading: false,
             error: err.message,
           }),
       });

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { TodoStore } from '../../../core/state/todo.store';
 import { EditConfirmDialogComponent } from '../../../shared/components/edit-confirm-dialog/edit-confirm-dialog.component';
@@ -9,7 +10,7 @@ import { TodoListComponent } from '../../components/todo-list/todo-list.componen
 
 @Component({
   selector: 'app-todo-page',
-  imports: [TodoListComponent, TodoFormComponent],
+  imports: [TodoListComponent, TodoFormComponent, MatProgressSpinnerModule],
   templateUrl: './todo-page.component.html',
   styleUrl: './todo-page.component.scss',
 })
