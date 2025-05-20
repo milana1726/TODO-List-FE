@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="todo__form">
+<form [formGroup]="form" class="todo__form" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline" class="todo__form__input">
     <input
       matInput
@@ -11,7 +11,7 @@
       <mat-error>{{ errorMessage() }}</mat-error>
     }
   </mat-form-field>
-  <button mat-mini-fab class="todo__form__add-btn" (submit)="onSubmit()">
+  <button mat-mini-fab class="todo__form__add-btn" type="submit">
     <mat-icon>add</mat-icon>
   </button>
 </form>

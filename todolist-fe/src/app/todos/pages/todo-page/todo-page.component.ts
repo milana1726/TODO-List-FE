@@ -1,28 +1,36 @@
-import { Component, inject, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { TodoStore } from '../../../core/state/todo.store';
 import { EditConfirmDialogComponent } from '../../../shared/components/edit-confirm-dialog/edit-confirm-dialog.component';
 import { Todo } from '../../../shared/models/interfaces/todo';
+import { TodoFormComponent } from '../../components/todo-form/todo-form.component';
 import { TodoListComponent } from '../../components/todo-list/todo-list.component';
-import { TodoApiService } from '../../services/todo-api.service';
 
 @Component({
   selector: 'app-todo-page',
-  imports: [TodoListComponent],
+  imports: [TodoListComponent, TodoFormComponent],
   templateUrl: './todo-page.component.html',
   styleUrl: './todo-page.component.scss',
 })
 export class TodoPageComponent {
-  private todoApiService = inject(TodoApiService);
-  public todos = signal<Todo[]>([]);
-  readonly dialog = inject(MatDialog);
+  public todoStore = inject(TodoStore);
+  private readonly dialog = inject(MatDialog);
+
+  public todos = this.todoStore.todos;
+  public loading = this.todoStore.loading;
+  public error = this.todoStore.error;
 
   constructor() {
-    this.todoApiService
-      .getTodos()
-      .pipe(takeUntilDestroyed())
-      .subscribe((data) => this.todos.set(data));
+    this.todoStore.getAllTodos();
+  }
+
+  addTodo(message: string) {
+    this.todoStore.addTodo(message);
+  }
+
+  toggleTodo(todo: Todo) {
+    this.todoStore.toggleTodo(todo);
   }
 
   updateTodo(todo: Todo) {
@@ -38,7 +46,7 @@ export class TodoPageComponent {
 
     dialogRef.afterClosed().subscribe((updatedMessage: string) => {
       if (updatedMessage) {
-        console.log(updatedMessage);
+        this.todoStore.updateTodoMessage(todo, updatedMessage);
       }
     });
   }
@@ -56,7 +64,7 @@ export class TodoPageComponent {
 
     dialogRef.afterClosed().subscribe((confirmed) => {
       if (confirmed) {
-        console.log(id);
+        this.todoStore.deleteTodo(id);
       }
     });
   }

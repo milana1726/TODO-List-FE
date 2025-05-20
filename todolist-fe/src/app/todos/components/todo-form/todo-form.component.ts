@@ -31,7 +31,7 @@ import { merge } from 'rxjs';
 export class TodoFormComponent {
   public form: FormGroup;
   public errorMessage = signal('');
-  @Output() addNewTodo = new EventEmitter<string>();
+  @Output() addTodo = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -59,8 +59,9 @@ export class TodoFormComponent {
 
   onSubmit() {
     if (this.messageControl?.valid) {
-      this.addNewTodo.emit(this.messageControl.value);
-      this.messageControl.reset();
+      this.addTodo.emit(this.messageControl.value);
+      this.form.reset();
+      this.messageControl.setErrors(null);
     }
   }
 }

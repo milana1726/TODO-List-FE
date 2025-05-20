@@ -40,7 +40,7 @@ export const TodoStore = signalStore(
     },
     toggleTodo: (todo: Todo) => {
       patchState(store, { loading: true });
-      todoApi.updateTodo({ ...todo }).subscribe({
+      todoApi.updateTodo({ ...todo, completed: !todo.completed }).subscribe({
         next: (updatedTodo) =>
           patchState(store, {
             todos: store
@@ -57,9 +57,9 @@ export const TodoStore = signalStore(
       });
     },
 
-    updateTodoMessage: (todo: Todo) => {
+    updateTodoMessage: (todo: Todo, updatedMessage: string) => {
       patchState(store, { loading: true });
-      todoApi.updateTodo({ ...todo }).subscribe({
+      todoApi.updateTodo({ ...todo, message: updatedMessage }).subscribe({
         next: (updatedTodo) =>
           patchState(store, {
             todos: store

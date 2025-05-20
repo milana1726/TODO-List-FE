@@ -31,4 +31,5 @@ export class TodoItemComponent {
   @Input() todo: Todo | undefined;
   @Output() deleteTodo = new EventEmitter<void>();
   @Output() updateTodo = new EventEmitter<void>();
+  @Output() toggleTodo = new EventEmitter<void>();
 }

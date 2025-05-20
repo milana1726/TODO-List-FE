@@ -1,8 +1,8 @@
 <div class="todolist">
-  <app-todo-form />
   @for (todo of todos; track todo._id) {
     <app-todo-item
       [todo]="todo"
+      (toggleTodo)="toggleTodo.emit(todo)"
       (updateTodo)="updateTodo.emit(todo)"
       (deleteTodo)="deleteTodo.emit(todo._id)"
     />

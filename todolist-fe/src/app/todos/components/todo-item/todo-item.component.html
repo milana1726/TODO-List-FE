@@ -3,6 +3,7 @@
     <mat-checkbox
       class="todo__item__content__completed"
       [checked]="todo?.completed"
+      (change)="toggleTodo.emit()"
     ></mat-checkbox>
     <p class="todo__item__content__message">{{ todo?.message }}</p>
   </mat-card-content>
