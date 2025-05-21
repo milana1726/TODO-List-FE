@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,6 +35,7 @@ import { DialogData } from '../../models/interfaces/dialog-data';
   ],
   templateUrl: './edit-confirm-dialog.component.html',
   styleUrl: './edit-confirm-dialog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditConfirmDialogComponent {
   readonly updateMessageControl = new FormControl('', Validators.required);

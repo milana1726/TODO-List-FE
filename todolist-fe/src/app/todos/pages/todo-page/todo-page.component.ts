@@ -1,4 +1,9 @@
-import { Component, effect, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
@@ -14,6 +19,7 @@ import { TodoListComponent } from '../../components/todo-list/todo-list.componen
   imports: [TodoListComponent, TodoFormComponent, MatPaginatorModule],
   templateUrl: './todo-page.component.html',
   styleUrl: './todo-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoPageComponent {
   public todoStore = inject(TodoStore);

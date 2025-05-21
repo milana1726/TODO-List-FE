@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { Todo } from '../../../shared/models/interfaces/todo';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
@@ -8,14 +14,11 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
   imports: [TodoItemComponent],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoListComponent {
   @Input() todos: Todo[] = [];
   @Output() deleteTodo = new EventEmitter<string>();
   @Output() updateTodo = new EventEmitter<Todo>();
   @Output() toggleTodo = new EventEmitter<Todo>();
-
-  static trackByFn(todo: Todo): string | undefined {
-    return todo._id;
-  }
 }

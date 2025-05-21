@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
@@ -27,6 +33,7 @@ import { merge } from 'rxjs';
   ],
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoFormComponent {
   public form: FormGroup;
