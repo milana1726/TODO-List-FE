@@ -58,8 +58,11 @@ export class TodoFormComponent {
   }
 
   onSubmit() {
-    if (this.messageControl?.valid) {
-      this.addTodo.emit(this.messageControl.value);
+    const value = this.messageControl?.value;
+    if (!value) {
+      this.messageControl?.setErrors({ required: true });
+    } else {
+      this.addTodo.emit(value);
       this.form.reset();
       this.messageControl.setErrors(null);
     }
