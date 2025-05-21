@@ -9,6 +9,13 @@
   </mat-card-content>
   <mat-card-actions class="todo__item__actions">
     <button
+      mat-icon-button
+      class="todo__item__actions__info-btn"
+      (click)="onShowInfo(todo?._id)"
+    >
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+    <button
       mat-mini-fab
       type="button"
       class="todo__item__actions__edit-btn"

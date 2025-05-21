@@ -10,6 +10,7 @@ export const TodoStore = signalStore(
   { providedIn: 'root' },
   withState<TodoState>({
     todos: [] as Todo[],
+    selectedTodo: null,
     totalCount: 0,
     error: null as string | null,
   }),
@@ -35,6 +36,9 @@ export const TodoStore = signalStore(
         error: (err: Error) => patchState(store, { error: err.message }),
       });
     },
+
+    setSelectedTodo: (todo: Todo | null) =>
+      patchState(store, { selectedTodo: todo, error: null }),
 
     addTodo: (message: string, page: number, limit: number) => {
       const tempId = uuidv4();
@@ -100,7 +104,12 @@ export const TodoStore = signalStore(
     },
 
     updateTodoMessage: (todo: Todo, updatedMessage: string) => {
-      const updated = { ...todo, message: updatedMessage };
+      const trimmed = updatedMessage.trim();
+      if (!trimmed || trimmed === todo.message) {
+        return;
+      }
+
+      const updated = { ...todo, message: trimmed };
       patchState(store, {
         todos: store.todos().map((t) => (t._id === todo._id ? updated : t)),
         error: null,

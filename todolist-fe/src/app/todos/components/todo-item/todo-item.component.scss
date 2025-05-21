@@ -20,6 +20,10 @@
   &__actions {
     gap: 0.3rem;
 
+    &__info-btn {
+      color: variables.$primary-color;
+    }
+
     &__edit-btn,
     &__delete-btn {
       border-radius: 0.5rem;
