@@ -29,7 +29,8 @@
       class="dialog__actions__confirm-btn"
       [disabled]="
         data.type === 'edit' &&
-        updateMessageControl.invalid && updateMessageControl.touched
+        updateMessageControl.invalid &&
+        updateMessageControl.touched
       "
       (click)="onConfirm()"
     >

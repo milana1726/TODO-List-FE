@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -9,10 +9,20 @@ import { Todo } from '../../shared/models/interfaces/todo';
   providedIn: 'root',
 })
 export class TodoApiService {
-  private readonly http: HttpClient = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   public getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(BASE_URL);
+  }
+
+  public getTodosPerPage(
+    pageNumber: number,
+    limit: number
+  ): Observable<Todo[]> {
+    const params = new HttpParams()
+      .set('page', pageNumber.toString())
+      .set('limit', limit.toString());
+    return this.http.get<Todo[]>(BASE_URL, { params });
   }
 
   public getTodoById(id: string): Observable<Todo> {

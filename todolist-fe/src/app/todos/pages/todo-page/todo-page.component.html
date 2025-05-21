@@ -1,9 +1,14 @@
 <div class="todos__page">
   <h1>Tasks to do:</h1>
+  <mat-paginator
+    [length]="totalTodos()"
+    [pageSize]="limit"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5, 10, 15]"
+    [showFirstLastButtons]="showFirstLastButtons"
+    (page)="onPageChange($event)"
+  ></mat-paginator>
   <app-todo-form (addTodo)="addTodo($event)" />
-  @if (loading()) {
-    <mat-spinner></mat-spinner>
-  }
   <app-todo-list
     [todos]="todos()"
     (toggleTodo)="toggleTodo($event)"
