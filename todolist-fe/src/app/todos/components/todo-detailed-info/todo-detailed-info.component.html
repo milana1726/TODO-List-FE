@@ -1,0 +1,26 @@
+<h2>Detailed info about task:</h2>
+<mat-card class="todo-item__info" appearance="outlined">
+  <mat-card-content class="todo-item__info__content">
+    <p class="todo-item__info__content__text">
+      <mat-icon>description</mat-icon>
+      <span class="todo-item__info__content__text__icon">Task:</span>
+      {{ selectedTodo?.message }}
+    </p>
+    <p class="todo-item__info__content__text">
+      <mat-icon>check_circle_outline</mat-icon>
+      <span class="todo-item__info__content__text__icon">Completed:</span>
+      {{ selectedTodo?.completed ? "Yes" : "No" }}
+    </p>
+    <p class="todo-item__info__content__text">
+      <mat-icon>event</mat-icon>
+      <span class="todo-item__info__content__text__icon">Created:</span>
+      {{ selectedTodo?.createdAt | date: "medium" }}
+    </p>
+    <p class="todo-item__info__content__text">
+      <mat-icon>history</mat-icon>
+      <span class="todo-item__info__content__text__icon">Last updated:</span>
+      {{ selectedTodo?.updatedAt | date: "medium" }}
+    </p>
+  </mat-card-content>
+  <img src="assets/todolist.webp" alt="todolist-image" />
+</mat-card>

@@ -1,0 +1,2 @@
+cd todolist-fe
+npx lint-staged

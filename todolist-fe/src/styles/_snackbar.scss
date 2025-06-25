@@ -1,0 +1,22 @@
+.snackbar {
+  max-height: 1rem;
+  max-width: 10rem;
+}
+
+.red-snackbar {
+  --mdc-snackbar-container-color: #ba1a1a;
+  --mat-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color: white;
+}
+
+.mat-mdc-snack-bar-container.green-snackbar {
+  --mdc-snackbar-container-color: green;
+  --mat-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color: white;
+  --mdc-snackbar-supporting-text-size: 0.75rem;
+
+  .mdc-snackbar__surface {
+    min-width: auto;
+    height: 1.7rem;
+  }
+}

@@ -1,0 +1,35 @@
+<mat-card class="todo__item" appearance="outlined">
+  <mat-card-content class="todo__item__content">
+    <mat-checkbox
+      class="todo__item__content__completed"
+      [checked]="todo?.completed"
+      (change)="toggleTodo.emit()"
+    ></mat-checkbox>
+    <p class="todo__item__content__message">{{ todo?.message }}</p>
+  </mat-card-content>
+  <mat-card-actions class="todo__item__actions">
+    <button
+      mat-icon-button
+      class="todo__item__actions__info-btn"
+      (click)="onShowInfo(todo?._id)"
+    >
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      type="button"
+      class="todo__item__actions__edit-btn"
+      (click)="updateTodo.emit()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      type="button"
+      class="todo__item__actions__delete-btn"
+      (click)="deleteTodo.emit()"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
