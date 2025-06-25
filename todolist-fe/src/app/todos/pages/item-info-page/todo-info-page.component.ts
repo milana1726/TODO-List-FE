@@ -38,6 +38,8 @@ export class TodoInfoPageComponent implements OnInit {
 
     if (todo) {
       this.todoStore.setSelectedTodo(todo);
+    } else {
+      this.router.navigate(['/404']);
     }
   }
 
