@@ -11,6 +11,7 @@ export class NotificationService {
     this.snackBar.open(message, 'OK', {
       duration: 3000,
       verticalPosition: 'top',
+      horizontalPosition: 'end',
       panelClass: ['red-snackbar'],
     });
   }
@@ -18,8 +19,8 @@ export class NotificationService {
   openSuccessSnackBar(message: string) {
     this.snackBar.open(message, 'OK', {
       duration: 1800,
+      verticalPosition: 'top',
       horizontalPosition: 'end',
-      verticalPosition: 'bottom',
       panelClass: ['green-snackbar'],
     });
   }
