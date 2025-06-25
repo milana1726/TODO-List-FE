@@ -36,4 +36,12 @@ h2 {
       }
     }
   }
+
+  @media screen and (max-width: variables.$small),
+    only screen and (max-width: variables.$medium) {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 }

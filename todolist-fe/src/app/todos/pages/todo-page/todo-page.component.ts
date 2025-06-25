@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,6 +7,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 
 import { NotificationService } from '../../../core/services/notification/notification.service';
 import { TodoStore } from '../../../core/state/todo.store';
@@ -16,7 +18,13 @@ import { TodoListComponent } from '../../components/todo-list/todo-list.componen
 
 @Component({
   selector: 'app-todo-page',
-  imports: [TodoListComponent, TodoFormComponent, MatPaginatorModule],
+  imports: [
+    TodoListComponent,
+    TodoFormComponent,
+    MatPaginatorModule,
+    RouterOutlet,
+    CommonModule,
+  ],
   templateUrl: './todo-page.component.html',
   styleUrl: './todo-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,6 +33,7 @@ export class TodoPageComponent {
   public todoStore = inject(TodoStore);
   private readonly dialog = inject(MatDialog);
   private notification = inject(NotificationService);
+  public route = inject(ActivatedRoute);
 
   public todos = this.todoStore.todos;
   public totalTodos = this.todoStore.totalCount;
